@@ -6,6 +6,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 
 app.use(express.json());
+app.use(express.static("./public"));
 
 app.use("/api/v1/tasks", tasksRouter);
 

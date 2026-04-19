@@ -3,7 +3,7 @@ const Task = require("../models/Task");
 const getAllTasks = async (req, res) => {
   try {
     const tasks = await Task.find();
-    res.status(200).json(tasks);
+    res.status(200).json({ tasks });
   } catch (error) {
     console.log(error);
     res.status(400).json({ message: error });
@@ -27,7 +27,7 @@ const getTask = async (req, res) => {
 
     const task = await Task.findOne({ _id: id });
     if (!task) return res.status(404).json({ message: "task not found" });
-    res.status(200).json(task);
+    res.status(200).json({ task });
   } catch (error) {
     console.log(error);
     res.status(400).json({ message: error });
@@ -44,7 +44,7 @@ const updateTasks = async (req, res) => {
     if (!task) {
       res.status(404).json({ msg: "this task not found" });
     }
-    res.status(200).json(task);
+    res.status(200).json({ task });
   } catch (error) {
     res.status(500).json(error);
   }
