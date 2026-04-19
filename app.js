@@ -1,14 +1,16 @@
 const express = require("express");
 const app = express();
 const tasksRouter = require("./routers/tasks");
-// const mongodbConnect = require("./db/connection");
 require("dotenv").config();
 const mongoose = require("mongoose");
+const notFound = require("./middleware/not-found");
 
 app.use(express.json());
 app.use(express.static("./public"));
 
 app.use("/api/v1/tasks", tasksRouter);
+
+app.use(notFound);
 
 // const PORT = 3000;
 mongoose
